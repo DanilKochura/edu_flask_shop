@@ -1,0 +1,30 @@
+{% macro nav_tab(name, route) %}
+    <li class="">
+        <a href="{{ url_for(route) }}" class="nav-link px-2
+    {% if request.url_rule.endpoint == route and not off %}
+       text-warning
+       {% else %}
+               text-white
+
+    {% endif %}">
+            {{ name }}
+        </a>
+    </li>
+{% endmacro %}
+
+<header class="p-3 text-bg-dark border-2 border-bottom border-warning">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                {{ nav_tab('Главная', 'menu_choice') }}
+                {{ nav_tab('Каталог', 'bp_order.order_index') }}
+            </ul>
+
+
+            <div class="text-end">
+                <a type="button" class="btn btn-danger" href="/exit">Выход</a>
+            </div>
+        </div>
+    </div>
+</header>

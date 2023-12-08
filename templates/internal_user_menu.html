@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block external_user %}
+
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <div class="row">
+                {% if session.get('user_group', None) == 'admin' %}
+                    <div class="col">
+                        <a href="{{ url_for('bp_query.queries') }}" class="btn btn-warning py-2 my-4 w-100">Начать
+                            запросы</a>
+                    </div>
+                {% endif %}
+                <div class="col">
+                    <a href="{{ url_for('bp_report.start_report') }}" class="btn btn-warning py-2 my-4 w-100">К
+                        отчетам</a>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a href="/exit" class="btn btn-danger w-100"> Нажмите для выхода из системы</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
