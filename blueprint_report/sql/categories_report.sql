@@ -1,0 +1,1 @@
+select cat_name, amount, summ, `month`, `year` from categories_report where `month` = '$input_month' and `year` = '$input_year'

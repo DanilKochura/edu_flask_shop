@@ -1,0 +1,9 @@
+body
+{
+    height: 100vh;
+}
+
+.centered-form
+{
+    max-width: 350px;
+}
