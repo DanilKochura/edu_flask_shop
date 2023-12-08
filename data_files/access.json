@@ -1,0 +1,19 @@
+{
+  "admin": [
+    "bp_report",
+    "bp_query"
+  ],
+  "worker": [
+    "bp_report.view_rep1",
+    "bp_report.view_rep2",
+    "bp_report.start_report"
+  ],
+  "manager": [
+    "bp_report.create_rep1",
+    "bp_report.create_rep2",
+    "bp_report.start_report"
+  ],
+  "external": [
+    "bp_order"
+  ]
+}
