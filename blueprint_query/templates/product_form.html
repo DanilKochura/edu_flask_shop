@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск продукта</title>
+    {% include 'parts/bootstrap.html' %}
+
+</head>
+<body class="bg-dark text-white">
+{% include 'parts/internal_navbar.html' %}
+<div class="container  mt-3">
+    <div class="row">
+        <div class="col-5 border-1 border-left">
+            <h2>Введите названние продукта</h2>
+            <div>
+                <form action="" method="POST">
+                    <p for="product">Введите название продукта</p>
+                    <input name="product_name" class="form-control" id="product" type="text"
+                           placeholder="Огурцы">
+                    <button type="submit" class="btn btn-warning mt-4 ">Отправить</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-5">
+            {% if error %}
+                <p class="bg-danger-subtle text-center fs-6 fw-bold my-3 py-3 rounded-4 shadow-sm text-danger">{{ error }}</p>
+            {% endif %}
+            {% if message %}
+                <p class="bg-info bg-opacity-25 text-center fs-6 fw-bold my-3 py-3 rounded-4 shadow-sm text-info">{{ message }}</p>
+            {% endif %}
+            {% if result and schema %}
+                <table class="table table-bordered text-white">
+                    <thead>
+                    <tr>
+                        {% for column in schema %}
+                            <td>{{ column }}</td>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for line in result %}
+                        <tr>
+                            {% for column in line %}
+                                <td> {{ column }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+
+            {% endif %}
+
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

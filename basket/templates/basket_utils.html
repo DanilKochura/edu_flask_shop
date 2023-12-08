@@ -1,0 +1,43 @@
+{% macro render_item(item, show_form=False, show_amount=False) %}
+    <div class="col-3 mb-4" style="">
+        <div class="p-1 border rounded-2">
+            <div class="text-center"><img src="{{ item['image'] }}" alt="" class="img-fluid" style="height: 120px">
+            </div>
+            <div class="text-center">
+                <p class="fs-5 fw-bold text-info mb-2 overflow-hidden "
+                   style="height: 4rem"> {{ item['prod_name'] }} </p>
+                <p class="pb-0 mb-0"><s>{{ item['prod_price'] }}₽/{{ item['prod_measure'] }}</s></p>
+                <p class=" fs-4"><span class="text-danger">{{ item['prod_price'] }}₽</span>/{{ item['prod_measure'] }}
+                </p>
+            </div>
+
+            {% if show_form %}
+                <div>
+                    <form action="" method="post">
+                        <input type="hidden" name="prod_id" value="{{ item['prod_id'] }}">
+                        <input type="submit" name="action" value="Добавить в корзину" class="btn btn-success w-100">
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro render_cart_item(item, show_form=False, show_amount=False) %}
+    <div class="row border rounded-2 my-2">
+        <div class="col-3"><img src="{{ item['image'] }}" alt="" class="img-fluid">
+        </div>
+        <div class="col-4">
+            <p class="fs-5 fw-bold text-info mb-2 overflow-hidden " style="height: 4rem"> {{ item['prod_name'] }} </p>
+        </div>
+        <div class="col-2">
+            <p class=" fs-4"><span class="text-danger">{{ item['prod_price']*item['amount'] }}₽</span></p>
+        </div>
+    <div class="col-3">
+        {% if show_amount %}
+                <span> Количество: </span>
+                <span> {{ item['amount'] }} </span>
+            {% endif %}
+    </div>
+    </div>
+{% endmacro %}

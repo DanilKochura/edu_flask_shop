@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Flask project</title>
+    {% include 'parts/bootstrap.html' %}
+</head>
+
+<body>
+{% include 'parts/external_navbar.html' %}
+
+{#<a href="{{url_for('bp_order.save_order')}}"> Оформить заказ</a> <br><br>#}
+
+{% import 'basket_utils.html' as utils %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+        <h2>Все товары</h2>
+        <div class="row">
+            {% if items %}
+        {% for item in items %}
+            {{ utils.render_item(item, show_form = True, show_amount = False) }}
+        {% endfor %}
+        {% else %}
+            <p> Нет доступных товаров</p>
+        {% endif %}
+        </div>
+    </div>
+    <div class="col-4">
+        <h2 style="">Ваша корзина</h2>
+        {% if basket %}
+        {% for key in basket %}
+            {{ utils.render_cart_item(basket[key], show_form = False, show_amount = True) }}
+        {% endfor %}
+<div class="text-end">
+                    <a class="btn btn-danger" href="{{url_for('bp_order.clear_basket')}}">Очистить корзину</a>
+
+</div>
+        {% else %}
+            <p>Ваша корзина пуста</p>
+        {% endif %}
+    </div>
+    </div>
+    </div>
+</body>
+</div>
+</html>
